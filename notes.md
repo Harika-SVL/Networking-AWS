@@ -57,8 +57,49 @@
 * The leased lines are used by corporate offices, businesses, companies, internet cafes, and so on
 * Basically, leased lines are used in all places that require an uninterrupted Internet connection for collaboration and communication activities
 
-13. CoLO
-14. public and private networks
+13. CoLO (Colo Hosting, Colocation Space, Colocation Server Hosting, or Colocation Data Center Space.) : A Colo is space provided in a data center for servers and equipment that can directly connect to Internet network backbones
+* Colo is used by businesses to provide reliable, secure, redundant, Internet connectivity and space for websites, applications, and important data
+* Most data centers offer additional managed network service and onsite support for all aspects of WAN connectivity and security
+* Colo space is sold by the rack or cage with additional options for power, cooling, and data back-up available
+
+14. public networks : A public network is an unrestricted network that’s accessible to the general public– like the Internet
+* Because anyone can access this network, it comes with certain security risks
+* The data over this type of open connection is often unencrypted, which makes it an enticing target for hackers
+
+15. private networks : A private network is a network that uses a private space and can only be accessed by approved devices (Think of it as a members-only club)
+* These are configured in a way that only lets certain users in
+* They’re purpose-built and might even restrict outbound connections
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  * subnets = 2^n -2
 
