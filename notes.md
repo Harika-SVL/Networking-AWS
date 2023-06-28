@@ -43,9 +43,20 @@
 9. OSI Model (Open Systems Interconnection) : describes seven layers that computer systems use to communicate over a network
 * The modern Internet is not based on OSI, but on the simpler TCP/IP model
 * OSI 7-layer model is still widely used, as it helps visualize and communicate how networks operate, and helps isolate and troubleshoot networking problems
-10. Load Balancing
-11. DNS
-12. Leased Lines
+
+10. Load Balancing : Load balancing is the method of distributing network traffic equally across a pool of resources that support an application
+* Modern applications must process millions of users simultaneously and return the correct text, videos, images, and other data to each user in a fast and reliable manner
+* Load balancing directs and controls internet traffic between the application servers and their visitors or clients 
+* As a result, it improves an application’s availability, scalability, security, and performance
+
+11. DNS (Domain name system) : is a naming database in which internet domain names are located and translated into Internet Protocol (IP) addresses
+* DNS translates domain names to IP addresses so browsers can load Internet resources
+* Each device connected to the Internet has a unique IP address which other machines use to find the device
+
+12. Leased Lines : leased line is an allocated circuit between two points of communication
+* The leased lines are used by corporate offices, businesses, companies, internet cafes, and so on
+* Basically, leased lines are used in all places that require an uninterrupted Internet connection for collaboration and communication activities
+
 13. CoLO
 14. public and private networks
 
