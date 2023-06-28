@@ -70,42 +70,198 @@
 * These are configured in a way that only lets certain users in
 * They’re purpose-built and might even restrict outbound connections
 
+## Home network
+
+* Overview
+![Alt text](shots/12.PNG)
+
+## Concepts
+
+* IP Address: This is a unique number given to a device in a network. It has two schemes
+   * IPv4
+   * IPv6
+* IPv4 is a 32 bit number organized into 4 octets (8 bits) addressed as x.x.x.x
+* Execute ipconfig in command prompt :
+
+![Alt text](shots/13.PNG)
+
+* IP Address id combination of network id and host id
+```
+ip: 192.168.0.118
+sm: 255.255.255.0
+
+network id (255): 1,2,3 => 192.168.0
+host id (0): 4 => 118
+size: bits for host id => 1 octet => 8 => 2^8 - 2 => 256-2 = 254
+
+192.168.0.0 (network id)
+192.168.0.255 (broadcast)
+-----------------------------------------------------------------
+ip: 192.168.0.111
+sm: 255.255.0.0
+
+network id: 1,2 => 192.168
+host id: 3,4 => 0.111
+size: 2 octects =>16 => 2^16-2 65536-2 = 65534
+
+192.168.0.0 (network id)
+192.168.255.255 (broadcast)
+```
+* Router is shown as Default Gateway in ipconfig
+
+## Network Principle
+
+* A Device can communicate directly with other device in same network
+* Router is a device which can transfer packets from one network to other
+
+## IP Addressing (Class Based)
+
+* We have classes to define ip ranges
+    => Class A
+    => Class B
+    => Class C
+    => Class D
+    => Class E
+
+## CIDR (Classless inter domain routing)
+
+* Quick revision
+```
+ip: 192.168.0.118
+sm: 255.255.255.0
+
+n (host id) = 1 octet = 8 bits
+N (Network id) = 32 - n  = 24 bits
+```
+* Find subnet mask for a network of 500 devices
+```
+500
+
+2^n - 2 ~= 500
+
+2^n ~= 500
+
+n = 9
+N = 32 - 9 = 23
+
+SM: 11111111.11111111.11111110.00000000
+    255.255.254.0
+```
+* Find subnet mask for a network of 5000 devices
+```
+5000
+
+2^n - 2 ~= 5000
+
+2^n ~= 5000
+
+n = 13
+N = 32-13 = 19
+
+SM: 11111111.11111111.11100000.00000000
+    255.255.224.0
+```
+* Find subnet mask for a network of 50000 devices
+```
+2^n - 2 ~= 50000
+2^n ~= 50000
+n = 16
+N = 32-16 = 16
+SM: 11111111.11111111.00000000.00000000
+    255.255.0.0
+```
+* Find a subnet mask for a network with 8 devices
+```
+2^n -2 = 8
+2^n ~= 10
+n = 4
+N = 28
+SM: 11111111.11111111.11111111.11110000
+     255.255.255.240
+```
+* Find a subnet mask for a network with 80000 devices
+```
+2^n -2 = 80000
+2^n ~= 80000
+n = 17
+N = 32-17 = 15
+SM: 11111111.11111110.00000000.00000000
+     255.254.0.0
+```
+* In this notation ip is expressed as 'x.x.x.x/N'
+```
+192.168.0.0/24
+N (network id) = 24 bits
+n (host id) = 32 - 24 = 8
+ip: 192.168.0.x => 192.168.0.0 to 192.168.0.255
+SM: 11111111.11111111.11111111.00000000
 
 
+10.0.0.0/16
+N = 16
+n = 32 -16 = 16
+ip: 10.0.x.x => 10.0.0.0 to 10.0.255.255
+SM: 11111111.11111111.00000000.00000000
+
+10.0.0.0/8
+N = 8
+n = 32-8 = 24
+ip: 10.x.x.x => 10.0.0.0 to 10.255.255.255
+SM: 11111111.00000000.00000000.00000000
 
 
+192.168.0.0/22
+N = 22
+n = 32-22 = 10
+
+ip: 192.168.(0+x).x => 192.168.(0+0).0 to 192.168.(0+3).255
+                    => 192.168.0.0 to 192.168.3.255
+SM: 11111111.11111111.11111100.00000000
+
+172.16.0.0/26
+N = 26
+n = 32-26 = 6
+
+ip: 172.16.0.(0+x) => 172.16.0.(0+0) to 172.16.0.(0+63)
+                => 172.16.0.0 to 172.16.0.63
+SM: 11111111.11111111.11111111.11000000
 
 
+172.16.0.0/12
+N = 12
+n = 32-12 = 20
+ip: 172.(16+x).x.x => 172.(16+0).0.0 to 172.(16+15).255.255
+                => 172.16.0.0 to 172.31.255.255
+SM: 11111111.11110000.00000000.00000000
 
 
+192.168.64.0/22
+
+N = 22
+n = 10
+
+ip: 192.168.(64+x).x => 192.168.(64+0).0 to 192.168.(64+3).255
+                    => 192.168.64.0 to 192.168.67.255
+SM: 11111111.11111111.11111100.00000000
 
 
+172.16.0.0/15
+
+N = 15
+n = 17
+
+ip:  172.(16+x).x.x => 172.16.0.0 to 172.17.255.255
+SM: 11111111.11111110.00000000.00000000
 
 
+192.168.8.0/22
 
+N = 22
+n = 10
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- * subnets = 2^n -2
-
- * 2 => 0.0.0.0 => Network IP
-     => 255.255.255 => Broadcast IP
-
+ip: 192.168.(8+x).0 to 192.168.8.0 to 192.168.11.255
+SM: 11111111.11111111.11111100.00000000
+```
 ## Private vs Public Network
 
 => Private Network: Network which cannot be accesed directly from internet
@@ -132,9 +288,9 @@ example
 
 ### Scenario
 
-* Consider you need to create network with subnets for the following
+=> Consider you need to create network with subnets for the following
 
-1. A Building with 4 floors, Each floor requires 50 devices
+* A Building with 4 floors => Each floor requires 50 devices
 ```
 each floor ~= 50
 2^n ~= 50
@@ -161,7 +317,7 @@ FL SM: 11111111.11111111.11111111.11000000
                                  .10000000 => 192.168.0.128/26 (3rd floor)
                                  .11000000 => 192.168.0.192/26 (4th floor)
 ```
-* Each device requires 100 devices
+* A Building with 4 floors => Each device requires 100 devices
 ```
 each floor ~= 100
 2^n ~= 100
@@ -189,7 +345,7 @@ FL SM: 11111111.11111111.11111111.10000000
                                 1.00000000 => 172.16.1.0/25
                                 1.10000000 => 172.16.1.128/25
 ```
-* Each floor requires 30,000 devices
+* A Building with 4 floors => Each floor requires 30,000 devices
 ```
 each floor ~= 30000
 2^n ~= 30000
@@ -215,9 +371,7 @@ FL SM: 11111111.11111111.10000000.00000000
                        1.00000000  => 10.1.0.0/17
                        1.10000000  => 10.1.128.0/17
 ```
-2. Building with 8 floors
-
-* Each floor requires 100 devices
+* Building with 8 floors => Each floor requires 100 devices
 ```
 each floor ~= 100
 2^n ~= 100
@@ -248,7 +402,7 @@ FL SM: 11111111.11111111.11111111.10000000
                                11.00000000 => 192.168.3.0/25
                                11.10000000 => 192.168.3.128/25
 ```
-* Each floor has 30,000 devices
+* Building with 8 floors => Each floor has 30,000 devices
 ```
 each floor ~= 30,000
 2^n ~30,000
@@ -274,7 +428,7 @@ FL SM: 11111111.11111111.10000000.00000000
 
                           11111     
 ```
-* Each floor has 50 devices
+* Building with 8 floors => Each floor has 50 devices
 ```
 each floor ~= 50
 2^n ~= 50
