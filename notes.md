@@ -9,28 +9,45 @@
 * In IPv4, binary bits are separated by a dot (.); IPv6 separates binary bits by a colon (:)
 * IPv4 follows the numeric addressing method and IPv6 is alphanumeric
 
-2. Network interface : the point of interconnection between a computer and a private or public network. 
-* A network interface is generally a network interface card (NIC), but does not have to have a physical form. Instead, the network interface can be implemented in software. 
+2. Network interface : the point of interconnection between a computer and a private or public network
+* A network interface is generally a network interface card (NIC), but does not have to have a physical form. Instead, the network interface can be implemented in software 
 
-3. Network : A network consists of two or more computers that are linked in order to share resources, exchange files, or allow electronic communications. 
-* The computers on a network may be linked through cables, telephone lines, radio waves, satellites, or infrared light beams.
+3. Network : A network consists of two or more computers that are linked in order to share resources, exchange files, or allow electronic communications
+* The computers on a network may be linked through cables, telephone lines, radio waves, satellites, or infrared light beams
 * Two very common types of networks include:
 
    1. Local Area Network (LAN)
    2. Wide Area Network (WAN)
-* You may also see references to a Metropolitan Area Networks (MAN), a Wireless LAN (WLAN), or a Wireless WAN (WWAN).
+* You may also see references to a Metropolitan Area Networks (MAN), a Wireless LAN (WLAN), or a Wireless WAN (WWAN)
 
-4. Subnet : A subnet, or subnetwork, is a segmented piece of a larger network. 
-* More specifically, subnets are a logical partition of an IP network into multiple, smaller network segments. 
-* The Internet Protocol (IP) is the method for sending data from one computer to another over the internet.
-* There are several types of routers, but most routers pass data between LANs (local area networks) and WANs (wide area networks). 
-* A LAN is a group of connected devices restricted to a specific geographic area. 
-* A LAN usually requires a single router.
+4. Subnet : A subnet, or subnetwork, is a segmented piece of a larger network
+* More specifically, subnets are a logical partition of an IP network into multiple, smaller network segments 
+* The Internet Protocol (IP) is the method for sending data from one computer to another over the internet
+* There are several types of routers, but most routers pass data between LANs (local area networks) and WANs (wide area networks)
+* A LAN is a group of connected devices restricted to a specific geographic area
+* A LAN usually requires a single router
 
-5. Switching : Switching is process to forward packets coming in from one port to a port leading towards the destination. * When data comes on a port it is called ingress, and when data leaves a port or goes out it is called egress. 
-* A communication system may include number of switches and nodes.
+5. Switching : Switching is process to forward packets coming in from one port to a port leading towards the destination * When data comes on a port it is called ingress, and when data leaves a port or goes out it is called egress
+* A communication system may include number of switches and nodes
 
-6. 
+6. NAT (Network address translation) : is a method of mapping an IP address space into another by modifying network address information in the IP header of packets while they are in transit across a traffic routing device
+* As network address translation modifies the IP address information in packets, NAT implementations may vary in their specific behavior in various addressing cases and their effect on network traffic
+
+7. VPN (virtual private network) : It is a mechanism for creating a secure connection between a computing device and a computer network, or between two networks, using an insecure communication medium such as the public Internet
+* VPN is created by establishing a virtual point-to-point connection through the use of tunneling protocols over existing networks
+
+8. Gateway : A gateway is a node (router) in a computer network, a key stopping point for data on its way to or from other networks
+* On the Internet, the node that’s a stopping point can be a gateway or a host node
+* A computer that controls the traffic your Internet Service Provider (ISP) receives is a node
+
+9. OSI Model (Open Systems Interconnection) : describes seven layers that computer systems use to communicate over a network
+* The modern Internet is not based on OSI, but on the simpler TCP/IP model
+* OSI 7-layer model is still widely used, as it helps visualize and communicate how networks operate, and helps isolate and troubleshoot networking problems
+10. Load Balancing
+11. DNS
+12. Leased Lines
+13. CoLO
+14. public and private networks
 
  * subnets = 2^n -2
 
