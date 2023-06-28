@@ -1,3 +1,8 @@
+ * subnets = 2^n -2
+
+ * 2 => 0.0.0.0 => Network ID
+  => 1.1.1.1 => Broadcast ID
+
 ## Private vs Public Network
 
 => Private Network: Network which cannot be accesed directly from internet
@@ -234,7 +239,107 @@ specific ip address :
 
 4.4.4.4/32
 ```
+## Networking Concepts
 
+* DNS (Domain Name Server):
 
+   * DNS provides services which includes names to ip addresses (Domain names)
+   * DNS Servers can be :
+      1. public
+      2. internal
+* DNS Servers will have different record types :
+      1. A Record: name to ip mapping
+      2. CName Record: alias to name
+      3. other record types : https://www.site24x7.com/learn/dns-record-types.html
+* DNS can be setup on client system
+    * windows: open 'c:\windows\system32\drivers\etc\hosts' and entries
+    * other: open '/etc/hosts' and entries
 
+* DNS Servers can help
 
+![Alt text](shots/4.PNG)
+
+* DNS Servers will have DNS zones
+* DNS servers work on port 53
+
+## Communication between two networks privately
+
+* While communicating between two networks privately their ip ranges should not collide.
+```
+Case: non-colliding :
+
+network A: 192.168.0.0/24 => 192.168.0.0 to 192.168.0.255
+network B: 192.168.1.0/24 => 192.168.1.0 to 192.168.1.255
+
+Case: colliding :
+
+network A: 192.168.0.0/23 => 192.168.0.0 to 192.168.1.255
+network B: 192.168.1.0/24 => 192.168.1.0 to 192.168.1.255
+```
+## Within same campus/site/datacenter
+
+* Since the underlying network exists, we need to configure routing rules
+
+![Alt text](shots/5.PNG)
+
+## Across Cities
+
+* Option 1: Leased lines
+
+![Alt text](shots/6.PNG)
+
+* Option 2: VPN (Virtual Private Networks)
+
+![Alt text](shots/7.PNG)
+
+[ * Note: Point to site (Work from home connection) ]
+
+![Alt text](shots/8.PNG)
+
+## AWS Global Infrastructure
+
+* Region: Region is a Geographical location with Availability Zones (AZ). * * Each Region has a code and every AZ has an id
+* Regions also have local zones which they can add as additional zones (AZ)
+* Wavelength zones are 5G carrier network supported
+
+![Alt text](shots/9.PNG)
+
+* Edge Locations:
+
+=> They help in establishing direct connectivity with AWS Global network (AWS Direct Connect)
+
+![Alt text](shots/10.PNG)
+
+=> Content Delivery Networks
+
+## AWS Networking – VPC (Virtual Private Cloud)
+
+* AWS VPC is a service for enabling network to AWS Resources
+
+![Alt text](shots/11.PNG)
+
+* In AWS Every Region will have a Default VPC created by AWS which has internet gateway. 
+* All these days when you were creating ec2 instance you were using default vpc.
+
+[Note: Never ever mess with default vpc.]
+
+### Networking Components
+
+=> VPC: This is a private network scoped to a region
+
+=> Subnet: This is subnet part of some vpc scoped to AZ
+
+=> Elastic network interface: This is network interface which assigns a private ip and private dns name to any resource connected (ec2)
+
+=> Security Group: Rules around elastic network interface for incoming traffic (ingress) and outgoing traffic (egress)
+
+=> Route Table: Router for a network. Every vpc will have a default route table. This route table comes into action if subnet doesnot have its own route table.
+
+=> Internet Gateway: This provides dual internet access
+
+## Experiment 1: Create a vpc with 3 subnets in 3 zones
+
+* AWS resources do not have names, they have tags. Tag is Key value pair.
+* Tag with Key = Name and value = something is generally shown as Name in UI (Console)
+* AWS has a unique id for every resource which we create
+* Lets create a vpc with 3 subnets
