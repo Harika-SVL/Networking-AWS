@@ -1,7 +1,41 @@
+# Networking
+
+=> Terms :
+
+1. IP address : unique number given to a device in a network.It has two schemas :
+  * IPv4
+  * IPv6
+* IPv4 is 32-bit, whereas IPv6 is 128-bit
+* In IPv4, binary bits are separated by a dot (.); IPv6 separates binary bits by a colon (:)
+* IPv4 follows the numeric addressing method and IPv6 is alphanumeric
+
+2. Network interface : the point of interconnection between a computer and a private or public network. 
+* A network interface is generally a network interface card (NIC), but does not have to have a physical form. Instead, the network interface can be implemented in software. 
+
+3. Network : A network consists of two or more computers that are linked in order to share resources, exchange files, or allow electronic communications. 
+* The computers on a network may be linked through cables, telephone lines, radio waves, satellites, or infrared light beams.
+* Two very common types of networks include:
+
+   1. Local Area Network (LAN)
+   2. Wide Area Network (WAN)
+* You may also see references to a Metropolitan Area Networks (MAN), a Wireless LAN (WLAN), or a Wireless WAN (WWAN).
+
+4. Subnet : A subnet, or subnetwork, is a segmented piece of a larger network. 
+* More specifically, subnets are a logical partition of an IP network into multiple, smaller network segments. 
+* The Internet Protocol (IP) is the method for sending data from one computer to another over the internet.
+* There are several types of routers, but most routers pass data between LANs (local area networks) and WANs (wide area networks). 
+* A LAN is a group of connected devices restricted to a specific geographic area. 
+* A LAN usually requires a single router.
+
+5. Switching : Switching is process to forward packets coming in from one port to a port leading towards the destination. * When data comes on a port it is called ingress, and when data leaves a port or goes out it is called egress. 
+* A communication system may include number of switches and nodes.
+
+6. 
+
  * subnets = 2^n -2
 
- * 2 => 0.0.0.0 => Network ID
-  => 1.1.1.1 => Broadcast ID
+ * 2 => 0.0.0.0 => Network IP
+     => 255.255.255 => Broadcast IP
 
 ## Private vs Public Network
 
