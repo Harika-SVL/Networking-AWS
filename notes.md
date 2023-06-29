@@ -810,5 +810,63 @@ network B: 192.168.1.0/24 => 192.168.1.0 to 192.168.1.255
 
 => Amazon reserves the first four (4) IP addresses and the last one (1) IP address of every subnet for IP networking purposes. 
 
+## NAT Gateway
+
+* NAT is used to provide internet access to private subnets
+* AWS provides NAT by
+   * NAT instance
+   * NAT Gateway
+* NAT Gateway requires an elastic ip and it needs to be present in public subnet
+* Create a vpc with one public and private subnet
+* ensure you have ec2 instances in public and private subnet
+* NOw create a NAT gateway in public subnet
 
 
+
+
+
+
+* Wait till the state is Available for NAT Gateway
+
+
+
+* Now modify private route table to forward packets to NAT Gateway to access internet
+
+
+
+
+
+
+## VPC Peering
+
+* AWS VPC Peering allows private communicatiob between two vpc’s belonging to any regions or any accounts
+* The destination vpc should approve the peering request then in two vpc’s peering connection objects will be created.
+* Create a peering connection from one vpc
+
+
+
+
+
+
+
+
+
+
+
+
+* Now since there is infra to communicate, now modify route tables to forward packets to each other
+
+
+
+
+
+
+
+* Now ping from one ec2 to other using private ip
+
+
+
+
+* AWS VPC Peering workflow
+
+![Alt text](shots/72.PNG)
