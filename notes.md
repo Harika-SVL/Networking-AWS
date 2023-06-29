@@ -721,4 +721,71 @@ network B: 192.168.1.0/24 => 192.168.1.0 to 192.168.1.255
 
 ![Alt text](shots/50.PNG)
 
-* 
+## AWS Networking
+
+* Route table can be associated with subnet, if it is not associated main (default) route table acts as route table for this subnet
+* Subnet associated with a route table (explicitly or implicitly) which has route to internet gateway is public subnet and if it doest not have route to internet gateway it is considered to be private subnet.
+* In the below image, web is public subnet and app,db are private subnets
+
+![Alt text](shots/51.PNG)
+
+* Lets create this vpc
+
+![Alt text](shots/52.PNG)
+
+=> create a vpc with 3 subnets web, app, db
+
+![Alt text](shots/53.PNG)
+![Alt text](shots/54.PNG)
+![Alt text](shots/55.PNG)
+![Alt text](shots/56.PNG)
+
+=> Create a route table called as custom
+
+![Alt text](shots/57.PNG)
+
+=> Create internet gateway and attach to vpc
+
+![Alt text](shots/58.PNG)
+![Alt text](shots/59.PNG)
+
+=> Modify route table association of web subnet to use custom route table
+
+![Alt text](shots/60.PNG)
+![Alt text](shots/61.PNG)
+
+=> Now navigate to custom route table & add route to internet gateway
+
+![Alt text](shots/62.PNG)
+![Alt text](shots/63.PNG)
+
+=> Lets create a security group which allows ping from anywhere call it as allowping
+
+![Alt text](shots/64.PNG)
+![Alt text](shots/65.PNG)
+
+
+=> Now create an ec2 instance in web subnet and one ec2 instance in app with public ip for both instances
+
+![Alt text](shots/66.PNG)
+
+
+=> Experiments:
+    
+* ping ec2 instance from your system
+    * web (public subnet)
+
+    ![Alt text](shots/67.PNG)  
+
+    * app (private subnet)
+
+    ![Alt text](shots/68.PNG)
+
+* Login into public (web) ec2 instance by enabling ssh from other security group. ping ec2 instance in private subnet from public subnet
+
+    * ping with public ip fails (this is expected)
+    
+    * ping with private ip succeds as there is route within vpc and security group allows ping.
+
+* Any instance which helps connecting to private instances is called as bastion.
+* Instances in private subnet will not have access to internet, to provide access to internet for private subnets we need to take help from NAT Services of AWS (NAT-instance/NAT Gateway)
