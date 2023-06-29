@@ -717,7 +717,7 @@ network B: 192.168.1.0/24 => 192.168.1.0 to 192.168.1.255
 
 ![Alt text](shots/49.PNG)
 
-* The other layer of security is added by network acl
+* The other layer of security is added by ''Network ACL'
 
 ![Alt text](shots/50.PNG)
 
