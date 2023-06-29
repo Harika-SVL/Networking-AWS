@@ -667,10 +667,58 @@ network B: 192.168.1.0/24 => 192.168.1.0 to 192.168.1.255
 
 ![Alt text](shots/40.PNG)
 
+
+
+#### Case 1: Default VPC with 2 ec2’s in two subnets with public ips
+
+* Created two ec2 instances with 22 port opened sg rule
+
+![Alt text](shots/42.PNG)
+![Alt text](shots/43.PNG)
+![Alt text](shots/44.PNG)
+![Alt text](shots/45.PNG)
+![Alt text](shots/46.PNG)
+
+* Now after exiting from first machine try to connect to second machine with private_ip address (as both are in the same vpc of different subnets)
+
+![Alt text](shots/47.PNG)
+![Alt text](shots/48.PNG)
+
 * Try repeating the above steps by creating your own vpc
 
 ![Alt text](shots/41.PNG)
 
-## Case 1: Default VPC with 2 ec2’s in two subnets with public ips
+#### Case 2: Custom VPC with 2 ec2
 
-* Created two ec2 instances with 22 port opened sg rule
+* If the IGW is attached and connected to default route table and there is no other route table then it will work similar to default vpc
+
+## Security Groups
+
+* Security groups are like firewalls around network interfaces (ec2)
+* Security groups will have only allow rules
+* Security groups belong to vpc
+* Security group has two rule categories :
+     * incoming/ingress/inbound
+     * outgoing/egresss/outbound
+* Each rule consists of the following
+     * source/destination address
+     * protocol
+     * port
+* A network interface can have multiple security groups attached to it.
+* Every vpc will have a default security group
+    * inbound all traffic from a specific security group
+    * all outbound traffic is allowed
+* Lets try to create a security group without changing any rules
+    * the default while creating is no inbound and allow everything outbound
+* Protocols supported in SG are
+    * TCP
+    * UDP
+    * ICMP
+
+![Alt text](shots/49.PNG)
+
+* The other layer of security is added by network acl
+
+![Alt text](shots/50.PNG)
+
+* 
