@@ -795,4 +795,20 @@ network B: 192.168.1.0/24 => 192.168.1.0 to 192.168.1.255
     ![Alt text](shots/70.PNG)
 
 * Any instance which helps connecting to private instances is called as bastion.
+
 * Instances in private subnet will not have access to internet, to provide access to internet for private subnets we need to take help from NAT Services of AWS (NAT-instance/NAT Gateway)
+
+### Questions
+[refer here : https://aws.amazon.com/vpc/faqs/#:~:text=The%20minimum%20size%20of%20a,in%20which%20they%20are%20created. ]
+* What is smallest subnet size allowed in AWS ?
+
+=> The minimum size of a subnet is a /28 (or 14 IP addresses.) for IPv4. Subnets cannot be larger than the VPC in which they are created.
+
+=> For IPv6, the subnet size is fixed to be a /64. Only one IPv6 CIDR block can be allocated to a subnet.
+
+* In aws why the formula fr number of devices in subnet is 2^n -5
+
+=> Amazon reserves the first four (4) IP addresses and the last one (1) IP address of every subnet for IP networking purposes. 
+
+
+
