@@ -784,8 +784,15 @@ network B: 192.168.1.0/24 => 192.168.1.0 to 192.168.1.255
 * Login into public (web) ec2 instance by enabling ssh from other security group. ping ec2 instance in private subnet from public subnet
 
     * ping with public ip fails (this is expected)
-    
-    * ping with private ip succeds as there is route within vpc and security group allows ping.
+
+    => Adding more than one security group to the web based instance
+
+     ![Alt text](shots/69.PNG)
+     ![Alt text](shots/71.PNG)
+
+    * ping with private ip succeeds as there is route within vpc and security group allows ping.
+
+    ![Alt text](shots/70.PNG)
 
 * Any instance which helps connecting to private instances is called as bastion.
 * Instances in private subnet will not have access to internet, to provide access to internet for private subnets we need to take help from NAT Services of AWS (NAT-instance/NAT Gateway)
