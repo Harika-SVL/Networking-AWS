@@ -601,17 +601,76 @@ network B: 192.168.1.0/24 => 192.168.1.0 to 192.168.1.255
 * AWS has a unique id for every resource which we create
 * Lets create a vpc with 3 subnets
 
+=> Creating vpc
 
+![Alt text](shots/14.PNG)
+![Alt text](shots/15.PNG)
+![Alt text](shots/16.PNG)
+![Alt text](shots/17.PNG)
+![Alt text](shots/18.PNG)
+
+=> creating subnets
+
+![Alt text](shots/19.PNG)
 
 * Lets filter the view based on vpc created
+
+![Alt text](shots/20.PNG)
+![Alt text](shots/21.PNG)
+![Alt text](shots/22.PNG)
+![Alt text](shots/23.PNG)
+![Alt text](shots/24.PNG)
+
 * view subnets
+
+![Alt text](shots/25.PNG)
+
 * view route tables
+
+![Alt text](shots/26.PNG)
+
 * Lets tag this as default route table
-* Lets create an ec2 instance in this vpc in subnet 1
-* IP and Security groups are assigned to elastic network interface
+
+![Alt text](shots/27.PNG)
+
+* Lets create an ec2 instance in this vpc in subnet 1 and then launch instance
+
+![Alt text](shots/28.PNG)
+![Alt text](shots/29.PNG)
+![Alt text](shots/30.PNG)
+![Alt text](shots/31.PNG)
+
+* IP and Security groups are assigned to elastic network interface 
+
+![Alt text](shots/32.PNG)
+
 * As of now we cannot access this machine as we dont have route from internet to vpc. For this we need to deal with
     * internet gateway
     * modify route table to establish connection to internet gateway
 * Lets create an internet gateway and attach it to vpc
+
+![Alt text](shots/33.PNG)
+![Alt text](shots/34.PNG)
+![Alt text](shots/35.PNG)
+![Alt text](shots/36.PNG)
+
 * Now establish connection between default/main route table and internet gateway
-* 
+
+![Alt text](shots/37.PNG)
+![Alt text](shots/38.PNG)
+![Alt text](shots/39.PNG)
+
+## Activity
+
+* Create two ec2 instance in two subnets of default vpc.
+* Try connectiong these ec2 instances from your system and also connecting between ec2 instances
+
+![Alt text](shots/40.PNG)
+
+* Try repeating the above steps by creating your own vpc
+
+![Alt text](shots/41.PNG)
+
+## Case 1: Default VPC with 2 ec2’s in two subnets with public ips
+
+* Created two ec2 instances with 22 port opened sg rule
