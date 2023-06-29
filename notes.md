@@ -600,3 +600,18 @@ network B: 192.168.1.0/24 => 192.168.1.0 to 192.168.1.255
 * Tag with Key = Name and value = something is generally shown as Name in UI (Console)
 * AWS has a unique id for every resource which we create
 * Lets create a vpc with 3 subnets
+
+
+
+* Lets filter the view based on vpc created
+* view subnets
+* view route tables
+* Lets tag this as default route table
+* Lets create an ec2 instance in this vpc in subnet 1
+* IP and Security groups are assigned to elastic network interface
+* As of now we cannot access this machine as we dont have route from internet to vpc. For this we need to deal with
+    * internet gateway
+    * modify route table to establish connection to internet gateway
+* Lets create an internet gateway and attach it to vpc
+* Now establish connection between default/main route table and internet gateway
+* 
