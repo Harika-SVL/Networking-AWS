@@ -900,6 +900,7 @@ network B: 192.168.1.0/24 => 192.168.1.0 to 192.168.1.255
 
 ## Site to Site VPN (Virtual Private Networks)
 
+* Here, it is the connection between the AWS(vpc) and the Onpremesis network
 * Site to Site VPN Overview
 
 ![Alt text](shots/97.PNG)
