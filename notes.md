@@ -818,55 +818,117 @@ network B: 192.168.1.0/24 => 192.168.1.0 to 192.168.1.255
    * NAT Gateway
 * NAT Gateway requires an elastic ip and it needs to be present in public subnet
 * Create a vpc with one public and private subnet
-* ensure you have ec2 instances in public and private subnet
+
+![Alt text](shots/73.PNG)
+![Alt text](shots/74.PNG)
+
+* Create route tables and internet gateway
+
+![Alt text](shots/75.PNG)
+![Alt text](shots/76.PNG)
+
+* Set routes in route table and associate with the subnets
+
+![Alt text](shots/77.PNG)
+
+* ensure you have ec2 instances in public sudnet (public instance) and private subnet (private instance)
+
+![Alt text](shots/78.PNG)
+
+=> To check ping private instance from public machine
+
+![Alt text](shots/79.PNG)
+
+=> For connecting we need to upload 'id_rsa' into public machine using sftp and login to the private machine through 'id_rsa'
+
+![Alt text](shots/80.PNG)
+![Alt text](shots/81.PNG)
+
 * NOw create a NAT gateway in public subnet
 
-
-
-
-
+![Alt text](shots/82.PNG)
+![Alt text](shots/83.PNG)
 
 * Wait till the state is Available for NAT Gateway
 
-
+![Alt text](shots/84.PNG)
 
 * Now modify private route table to forward packets to NAT Gateway to access internet
 
-
-
-
-
+![Alt text](shots/85.PNG)
+![Alt text](shots/86.PNG)
 
 ## VPC Peering
 
 * AWS VPC Peering allows private communicatiob between two vpc’s belonging to any regions or any accounts
-* The destination vpc should approve the peering request then in two vpc’s peering connection objects will be created.
+* The rules to follow are :
+    => Both the instances to be present in the AWS network 
+    => The Ip CIDR address should not get conflicted
+* The destination vpc should approve the peering request then in two vpc’s peering connection objects will be created
 * Create a peering connection from one vpc
 
+![Alt text](shots/87.PNG)
+![Alt text](shots/88.PNG)
+![Alt text](shots/89.PNG)
+![Alt text](shots/90.PNG)
 
+* We need to accept the peering connection from the mentioned region (hyderabad)
 
-
-
-
-
-
-
-
-
+![Alt text](shots/91.PNG)
+![Alt text](shots/92.PNG)
+![Alt text](shots/93.PNG)
 
 * Now since there is infra to communicate, now modify route tables to forward packets to each other
 
+=> We need to change in both public,private route tables in ohio region
 
+![Alt text](shots/94.PNG)
 
+=> We need to change in default route table in hyderabad region
 
-
-
+![Alt text](shots/95.PNG)
 
 * Now ping from one ec2 to other using private ip
 
-
-
+![Alt text](shots/96.PNG)
 
 * AWS VPC Peering workflow
 
 ![Alt text](shots/72.PNG)
+
+* Peering connection is only between two vpc's, to have more than two we need extra peering connections for communication
+
+## Site to Site VPN (Virtual Private Networks)
+
+* Site to Site VPN Overview
+
+![Alt text](shots/97.PNG)
+
+* Site to Site VPN in AWS
+
+![Alt text](shots/98.PNG)
+
+* Multi vpc in a region to on-prem
+
+![Alt text](shots/99.PNG)
+
+* Multi vpc’s to Multi Datacenters on-prem
+
+![Alt text](shots/100.PNG)
+
+## AWS VPC Endpoints
+
+* Interface Endpoints allow to communicate to AWS Services using global network and gives an elastic network interface in the subnet
+
+![Alt text](shots/101.PNG)
+
+* Gateway Endpoints allow to route the traffic to access a particular service using a Gateway
+* If you want a private conection for a custom service (email, temperature) then use private link
+
+![Alt text](shots/102.PNG)
+
+## OSI Model
+
+* This model has 7 layers
+
+![Alt text](shots/103.PNG)
