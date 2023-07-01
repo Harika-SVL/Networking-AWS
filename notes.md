@@ -937,3 +937,115 @@ network B: 192.168.1.0/24 => 192.168.1.0 to 192.168.1.255
 * This model has 7 layers
 
 ![Alt text](shots/103.PNG)
+
+## Proxy Server : 
+
+* This server is used to filter out all the outbound network traffic
+
+![Alt text](shots/104.PNG)
+
+## Reverse Proxy Server : 
+
+* This server is used to forward the incoming traffic to the application
+
+![Alt text](shots/105.PNG)
+
+## Load Balancers : 
+
+* These servers distribute the traffic equally to servers
+* To ensure the request is forwarded only to servers which are responding, load balancers perform health checks
+* Load Balancer is of two types :
+        * Layer 4 load balancer : Layer-4 in osi knows about ip, port, protocol
+        * Layer 7 Load Balancer : Layer-7 in osi knows about http, ip, port, protocol, sessions
+
+## Load Balancers in AWS
+
+* AWS has 3 load balancers : 
+1. Classic Load Balancer (CLB): This can perform layer 4 and layer 7 load balancing
+
+[ Note : This is no longer recommended and is present in aws for backword comptability ]
+    
+   2. Network Load Balancer (NLB): This performs layer 4 load Balancing
+   3. Application Load Balancer (ALB): This performs layer 7 load Balancing
+
+=> NLB in AWS
+
+![Alt text](shots/107.PNG)
+
+=> ALB in AWS
+
+## Layer 4 load balancing v/s Layer 7 load balancing
+
+
+
+
+## Lab Setup
+
+### Layer 4 Loadbalancing setup
+
+* Create an ubuntu ec2 instance with public ip
+* Login into ubuntu 
+```
+sudo -i
+apt update
+apt install apache2 -y
+echo "<h1> Web Server For testing </h1>" > /var/www/html/info.html
+```
+![Alt text](shots/109.PNG)
+
+* Access 'http://<public-ip>/info.html'
+
+![Alt text](shots/110.PNG)
+
+* Create an AMI with name webserver
+
+=> Select the ec2 instance => Actions => Image and templates => Create image => Image name => Description => Create image
+
+![Alt text](shots/111.PNG)
+
+### Layer 7 loadbalancing setup
+
+* Create an ubuntu ec2 with public ip
+* Login into ubuntu
+```
+sudo -i
+apt update
+apt install apache2 -y
+mkdir /var/www/html/order
+echo "<h1> Order Server For testing </h1>" > /var/www/html/order/info.html
+```
+![Alt text](shots/112.PNG)
+
+* Access 'http://<public-ip>/order/info.html'
+
+![Alt text](shots/113.PNG)
+
+* Create an AMI with name orderserver
+
+=> Select the ec2 instance => Actions => Image and templates => Create image => Image name => Description => Create image
+
+![Alt text](shots/114.PNG)
+
+### Layer 7 loadbalancing setup
+
+* Create an ubuntu ec2 with public ip
+* Login into ubuntu
+```
+sudo -i
+apt update
+apt install apache2 -y
+mkdir /var/www/html/admin
+echo "<h1> Admin Server For testing </h1>" > /var/www/html/admin/info.html
+```
+![Alt text](shots/115.PNG)
+
+* Access 'http://<public-ip>/admin/info.html'
+
+![Alt text](shots/116.PNG)
+
+* Create an AMI with name adminserver
+
+=> Select the ec2 instance => Actions => Image and templates => Create image => Image name => Description => Create image
+
+![Alt text](shots/117.PNG)
+
