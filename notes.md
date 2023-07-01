@@ -997,7 +997,7 @@ echo "<h1> Web Server For testing </h1>" > /var/www/html/info.html
 
 ![Alt text](shots/110.PNG)
 
-* Create an AMI with name webserver
+* Create an AMI with name webserver (Snapshot also gets created)
 
 => Select the ec2 instance => Actions => Image and templates => Create image => Image name => Description => Create image
 
@@ -1020,7 +1020,7 @@ echo "<h1> Order Server For testing </h1>" > /var/www/html/order/info.html
 
 ![Alt text](shots/113.PNG)
 
-* Create an AMI with name orderserver
+* Create an AMI with name orderserver (Snapshot also gets created)
 
 => Select the ec2 instance => Actions => Image and templates => Create image => Image name => Description => Create image
 
@@ -1043,7 +1043,7 @@ echo "<h1> Admin Server For testing </h1>" > /var/www/html/admin/info.html
 
 ![Alt text](shots/116.PNG)
 
-* Create an AMI with name adminserver
+* Create an AMI with name adminserver (Snapshot also gets created)
 
 => Select the ec2 instance => Actions => Image and templates => Create image => Image name => Description => Create image
 
