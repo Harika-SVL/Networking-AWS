@@ -941,18 +941,26 @@ network B: 192.168.1.0/24 => 192.168.1.0 to 192.168.1.255
 ## Proxy Server : 
 
 * This server is used to filter out all the outbound network traffic
+* Every package from our system goes through the proxy server and if needed gets forwarded to the internet, if not gets rejected
+
+=> Example : some sites being blocked in the organisation using this
 
 ![Alt text](shots/104.PNG)
 
 ## Reverse Proxy Server : 
 
 * This server is used to forward the incoming traffic to the application
+* This acts as a intermediate between both client and the server
+* It is also known as superset of load balancer
+
+=> Example : For accessing nopCommerce we have also installed nginx as reverse proxy
 
 ![Alt text](shots/105.PNG)
 
 ## Load Balancers : 
 
-* These servers distribute the traffic equally to servers
+* These servers distribute the traffic equally to servers, so that the servers don't get overloaded
+* To run the classic applications, we have sticky sessions for load balancer, where the request from the same client is sent to the same server every time where they need to preprocess before forwarding the request (but this is not necessary with the latest applications)
 * To ensure the request is forwarded only to servers which are responding, load balancers perform health checks
 * Load Balancer is of two types :
         * Layer 4 load balancer : Layer-4 in osi knows about ip, port, protocol
