@@ -975,17 +975,28 @@ network B: 192.168.1.0/24 => 192.168.1.0 to 192.168.1.255
     
    2. Network Load Balancer (NLB): This performs layer 4 load Balancing
    3. Application Load Balancer (ALB): This performs layer 7 load Balancing
+   4. Gateway Load balancer (GLB)
 
+### Route 53 : 
+* Amazon Route 53 is a highly available and scalable Domain Name System (DNS) web service. Route 53 connects user requests to internet applications running on AWS or on-premises.
 => NLB in AWS
+
+* Here we need not have Public_ IP for instances, that's just the load balancer need to have the public_IP
 
 ![Alt text](shots/107.PNG)
 
 => ALB in AWS
 
+* Here we need not have Public_ IP for instances, that's just the load balancer need to have the public_IP
+
+![Alt text](shots/108.PNG)
+
 ## Layer 4 load balancing v/s Layer 7 load balancing
 
-
-
+* Layer 4 uses only TCP connection from client to the server while layer 7 uses two TCP connections from client to the server.
+* Layer 7 has application awareness whereas layer 4 only has on network and application ports.
+* Layer 7 makes smart and informed load balances based on the content of the data, however, layer 4 carries out its load balancing based on its inbuilt software algorithm.
+* Layer 4 is not applicable to microservices but layer 7 is great for microservices.
 
 ## Lab Setup
 
