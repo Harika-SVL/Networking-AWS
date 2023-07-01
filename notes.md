@@ -900,20 +900,24 @@ network B: 192.168.1.0/24 => 192.168.1.0 to 192.168.1.255
 
 ## Site to Site VPN (Virtual Private Networks)
 
-* Here, it is the connection between the AWS(vpc) and the Onpremesis network
-* Site to Site VPN Overview
+* Site to Site VPN Overview :
 
 ![Alt text](shots/97.PNG)
 
-* Site to Site VPN in AWS
+* Site to Site VPN in AWS :
+
+    * Here, it is the connection between the AWS(vpc) and the Onpremesis network
+    * VPN gateway is a service provided by AWS which helps in communication with 1VPC
 
 ![Alt text](shots/98.PNG)
 
-* Multi vpc in a region to on-prem
+* Multi vpc in a region to on-prem :
+
+    * Transit gateway is a service provided by AWS which helps in communication with multiple VPC's in the same region
 
 ![Alt text](shots/99.PNG)
 
-* Multi vpc’s to Multi Datacenters on-prem
+* Multi vpc’s to Multi Datacenters on-prem :
 
 ![Alt text](shots/100.PNG)
 
