@@ -1068,4 +1068,7 @@ echo "<h1> Admin Server For testing </h1>" > /var/www/html/admin/info.html
 
 ![Alt text](shots/117.PNG)
 
+## AWS Layer 4 load balancing using Network Load Balancer
+
+* We need two ec2 instances with webserver page with no public_IP address
 
