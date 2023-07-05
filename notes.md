@@ -1070,5 +1070,37 @@ echo "<h1> Admin Server For testing </h1>" > /var/www/html/admin/info.html
 
 ## AWS Layer 4 load balancing using Network Load Balancer
 
-* We need two ec2 instances with webserver page with no public_IP address
+* We need two ec2 instances with webserver page with no public_IP address (using already created image-WebServer)
+* we have created a bastian instance to test the connectivty
+* Network Load Balancer : 'https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html'
+* As we have tried to access the application using dns name of loadbalancer, we were able to access web page
+
+
+
+* We can create a record to map loadbalancer dns name to your existing domain
+
+
+
+## AWS layer 7 load balancing using Application Load Balancer
+
+* Create 4 ec2 instances with only private_IP with two applcations running inside them (Using already created images-OrderServer and AdminServer)
+
+
+
+* Application Load Balancer : 'https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html'
+
+* Enabling path based routing : 'https://repost.aws/knowledge-center/elb-achieve-path-based-routing-alb'
+
+* Path based routing : 'https://linuxhint.com/path-based-routing-alb/'
+
+* Once path based routing is set, access the application over the browser
+
+
+
+
+
+
+
+* Now we can map the ALBgit  to a dns record in Route 53
+
 
