@@ -1073,6 +1073,10 @@ echo "<h1> Admin Server For testing </h1>" > /var/www/html/admin/info.html
 * We need two ec2 instances with webserver page with no public_IP address (using already created image-WebServer)
 * we have created a bastian instance to test the connectivty
 * Network Load Balancer : 'https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html'
+
+    * Elastic Load Balancing automatically distributes your incoming traffic across multiple targets, such as EC2 instances, containers, and IP addresses, in one or more Availability Zones. * It monitors the health of its registered targets, and routes traffic only to the healthy targets. 
+    * Elastic Load Balancing scales your load balancer as your incoming traffic changes over time. 
+    * It can automatically scale to the vast majority of workloads.
 * As we have tried to access the application using dns name of loadbalancer, we were able to access web page
 
 
