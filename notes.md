@@ -1119,8 +1119,8 @@ echo "<h1> Admin Server For testing </h1>" > /var/www/html/admin/info.html
 
 * We can create a record to map loadbalancer dns name to your existing domain
 
-
-
+=> If we have a registered domain name we can associate and use it with the loadbalancer
+=> If not we can only generate some ns-generated names and add them to the officialy domain name providers...for example..godaddy ,etc and use them for the domain names
 
 ## AWS layer 7 load balancing using Application Load Balancer
 
