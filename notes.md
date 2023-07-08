@@ -1071,17 +1071,54 @@ echo "<h1> Admin Server For testing </h1>" > /var/www/html/admin/info.html
 ## AWS Layer 4 load balancing using Network Load Balancer
 
 * We need two ec2 instances with webserver page with no public_IP address (using already created image-WebServer)
-* we have created a bastian instance to test the connectivty
+* we have created a bastion instance to test the connectivty
+
+![Alt text](shots/119.PNG)
+
+* Login into Bastion machine and take try to access the other machines using private_IP
+
+![Alt text](shots/120.PNG)
+
 * Network Load Balancer : 'https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html'
 
     * Elastic Load Balancing automatically distributes your incoming traffic across multiple targets, such as EC2 instances, containers, and IP addresses, in one or more Availability Zones. * It monitors the health of its registered targets, and routes traffic only to the healthy targets. 
     * Elastic Load Balancing scales your load balancer as your incoming traffic changes over time. 
     * It can automatically scale to the vast majority of workloads.
+
+* Here, the two Ec2 instances we create are the target group
+
+=> Load Balancers => Create load balancer => Network Load Balancer => Create 
+
+![Alt text](shots/121.PNG)
+![Alt text](shots/122.PNG)
+
+* Now we create a target group and also add the health checks
+
+=> Target Groups => Create taget group => instances => WebServer => port:80 
+
+![Alt text](shots/123.PNG)
+![Alt text](shots/124.PNG)
+
+=> Health checks => TCP => Traffic port => Healthy threshold-3, Unhealthy threshold-2, Timeout-3, Interval-5 => Next
+
+![Alt text](shots/125.PNG)
+![Alt text](shots/126.PNG)
+![Alt text](shots/127.PNG)
+
+* Now add this as the listener into the load balancer and create the load balancer and wait till it turns to active state
+
+![Alt text](shots/128.PNG)
+![Alt text](shots/129.PNG)
+![Alt text](shots/130.PNG)
+![Alt text](shots/131.PNG)
+
+* Check the weserver using the dns name created on the browser
 * As we have tried to access the application using dns name of loadbalancer, we were able to access web page
 
-
+![Alt text](shots/132.PNG)
 
 * We can create a record to map loadbalancer dns name to your existing domain
+
 
 
 
