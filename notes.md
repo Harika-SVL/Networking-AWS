@@ -1123,14 +1123,17 @@ echo "<h1> Admin Server For testing </h1>" > /var/www/html/admin/info.html
 ![Alt text](shots/131.PNG)
 
 * Check the weserver using the dns name created on the browser
-* As we have tried to access the application using dns name of loadbalancer, we were able to access web page
+* As we have tried to access the application using DNS name of loadbalancer, we were able to access web page
 
 ![Alt text](shots/132.PNG)
 
-* We can create a record to map loadbalancer dns name to your existing domain
+* Now we can map the NLB to a DNS record in Route 53
 
-=> If we have a registered domain name we can associate and use it with the loadbalancer
-=> If not we can only generate some ns-generated names and add them to the officialy domain name providers...for example..godaddy ,etc and use them for the domain names
+=> Search Route 53 => Create hosted zone => create a record and give a name => select alias as the type of load balancer => select the traffic region,load balancer => create record => wait for the status to change from PENDING to INSYNC
+
+=> Now we can check for the application (/info.html) with the hostname given instead of the load balancer DNS name
+
+![Alt text](shots/170.PNG)
 
 ## AWS layer 7 load balancing using Application Load Balancer
 
@@ -1210,22 +1213,35 @@ echo "<h1> Admin Server For testing </h1>" > /var/www/html/admin/info.html
 
 ![Alt text](shots/157.PNG)
 
-=> Manage rules => select on ' + '
+=> Manage rules => select on ' + ' => Insert rule => Add condition => path
 
+![Alt text](shots/158.PNG)
+![Alt text](shots/159.PNG)
+![Alt text](shots/160.PNG)
 
+=> Let's also add rule for both orders and admin paths
 
+![Alt text](shots/161.PNG)
+![Alt text](shots/162.PNG)
+![Alt text](shots/163.PNG)
 
+* Now go to the target groups and check for health checks ,if passing or not
 
-
+![Alt text](shots/164.PNG)
+![Alt text](shots/165.PNG)
 
 * Once path based routing is set, access the application over the browser
 
+=> Take the dns name of the load balancer and check
 
+![Alt text](shots/166.PNG)
+![Alt text](shots/167.PNG)
+![Alt text](shots/168.PNG)
 
+* Now we can map the ALB to a DNS record in Route 53
 
+=> Search Route 53 => Create hosted zone => create a record and give a name => select alias as the type of load balancer => select the traffic region,load balancer => create record => wait for the status to change from PENDING to INSYNC
 
+=> Now we can check for both the applications (orders/info.html and admin/info.html) with the hostname given instead of the load balancer DNS name
 
-
-* Now we can map the ALBgit  to a dns record in Route 53
-
-
+![Alt text](shots/169.PNG)
