@@ -968,6 +968,11 @@ network B: 192.168.1.0/24 => 192.168.1.0 to 192.168.1.255
 
 ## Load Balancers in AWS
 
+* Elastic Load Balancing automatically distributes your incoming traffic across multiple targets, such as EC2 instances, containers, and IP addresses, in one or more Availability Zones
+* It monitors the health of its registered targets, and routes traffic only to the healthy targets. 
+* Elastic Load Balancing scales your load balancer as your incoming traffic changes over time. 
+* It can automatically scale to the vast majority of workloads.
+
 * AWS has 3 load balancers : 
 1. Classic Load Balancer (CLB): This can perform layer 4 and layer 7 load balancing
 
@@ -1070,6 +1075,10 @@ echo "<h1> Admin Server For testing </h1>" > /var/www/html/admin/info.html
 
 ## AWS Layer 4 load balancing using Network Load Balancer
 
+* A LOAD BALANCER serves as the single point of contact for clients. It distributes incoming traffic across multiple targets, such as Amazon EC2 instances. This increases the availability of your application. You add one or more listeners to your load balancer.
+* A LISTENER checks for connection requests from clients, using the protocol and port that you configure, and forwards requests to a target group.
+* Each TARGET GROUP routes requests to one or more registered targets, such as EC2 instances, using the TCP protocol and the port number that you specify. You can register a target with multiple target groups, can configure health checks on a per target group basis. Health checks are performed on all targets registered to a target group that is specified in a listener rule for your load balancer.
+
 * We need two ec2 instances with webserver page with no public_IP address (using already created image-WebServer)
 * we have created a bastion instance to test the connectivty
 
@@ -1081,9 +1090,10 @@ echo "<h1> Admin Server For testing </h1>" > /var/www/html/admin/info.html
 
 * Network Load Balancer : 'https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html'
 
-    * Elastic Load Balancing automatically distributes your incoming traffic across multiple targets, such as EC2 instances, containers, and IP addresses, in one or more Availability Zones. * It monitors the health of its registered targets, and routes traffic only to the healthy targets. 
-    * Elastic Load Balancing scales your load balancer as your incoming traffic changes over time. 
-    * It can automatically scale to the vast majority of workloads.
+    * A Network Load Balancer functions at the fourth layer of the Open Systems Interconnection (OSI) model
+    * It can handle millions of requests per second
+    * After the load balancer receives a connection request, it selects a target from the target group for the default rule
+    * It attempts to open a TCP connection to the selected target on the port specified in the listener configuration
 
 * Here, the two Ec2 instances we create are the target group
 
@@ -1124,13 +1134,31 @@ echo "<h1> Admin Server For testing </h1>" > /var/www/html/admin/info.html
 
 ## AWS layer 7 load balancing using Application Load Balancer
 
-* Create 4 ec2 instances with only private_IP with two applcations running inside them (Using already created images-OrderServer and AdminServer)
+* A LOAD BALANCER serves as the single point of contact for clients. The load balancer distributes incoming application traffic across multiple targets, such as EC2 instances, in multiple Availability Zones. This increases the availability of your application. You add one or more listeners to your load balancer.
+* A LISTENER checks for connection requests from clients, using the protocol and port that you configure. The rules that you define for a listener determine how the load balancer routes requests to its registered targets. Each rule consists of a priority, one or more actions, and one or more conditions. When the conditions for a rule are met, then its actions are performed. You must define a default rule for each listener, and you can optionally define additional rules.
+* Each TARGET GROUP routes requests to one or more registered targets, such as EC2 instances, using the protocol and port number that you specify. You can register a target with multiple target groups. You can configure health checks on a per target group basis. Health checks are performed on all targets registered to a target group that is specified in a listener rule for your load balancer.
+* The following diagram illustrates the basic components. Notice that each listener contains a default rule, and one listener contains another rule that routes requests to a different target group. One target is registered with two target groups.
 
+![Alt text](shots/134.PNG)
 
+* Create 4 ec2 instances with only private_IP with two applcations running inside them (Using already created images-OrdersServer and AdminServer)
+
+![Alt text](shots/133.PNG)
 
 * Application Load Balancer : 'https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html'
+    
+    * An Application Load Balancer functions at the application layer, the seventh layer of the Open Systems Interconnection (OSI) model
+    * After the load balancer receives a request, it evaluates the listener rules in priority order to determine which rule to apply, and then selects a target from the target group for the rule action
+    * You can configure listener rules to route requests to different target groups based on the content of the application traffic
+    * Routing is performed independently for each target group, even when a target is registered with multiple target groups
+    * You can configure the routing algorithm used at the target group level
+    * The default routing algorithm is round robin; alternatively, you can specify the least outstanding requests routing algorithm.
 
 * Enabling path based routing : 'https://repost.aws/knowledge-center/elb-achieve-path-based-routing-alb'
+
+
+
+
 
 * Path based routing : 'https://linuxhint.com/path-based-routing-alb/'
 
