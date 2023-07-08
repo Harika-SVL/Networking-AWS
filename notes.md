@@ -1095,7 +1095,7 @@ echo "<h1> Admin Server For testing </h1>" > /var/www/html/admin/info.html
     * After the load balancer receives a connection request, it selects a target from the target group for the default rule
     * It attempts to open a TCP connection to the selected target on the port specified in the listener configuration
 
-* Here, the two Ec2 instances we create are the target group
+* Here, the two Ec2 instances we create a load balancer (Network Load Balancer)
 
 => Load Balancers => Create load balancer => Network Load Balancer => Create 
 
@@ -1104,7 +1104,7 @@ echo "<h1> Admin Server For testing </h1>" > /var/www/html/admin/info.html
 
 * Now we create a target group and also add the health checks
 
-=> Target Groups => Create taget group => instances => WebServer => port:80 
+=> Target Groups => Create target group => instances => WebServer => port:80 
 
 ![Alt text](shots/123.PNG)
 ![Alt text](shots/124.PNG)
@@ -1142,6 +1142,11 @@ echo "<h1> Admin Server For testing </h1>" > /var/www/html/admin/info.html
 ![Alt text](shots/134.PNG)
 
 * Create 4 ec2 instances with only private_IP with two applcations running inside them (Using already created images-OrdersServer and AdminServer)
+* we have created a bastion instance to test the connectivty
+
+![Alt text](shots/135.PNG)
+
+* Login into Bastion machine and take try to access the other machines using private_IP
 
 ![Alt text](shots/133.PNG)
 
@@ -1154,13 +1159,64 @@ echo "<h1> Admin Server For testing </h1>" > /var/www/html/admin/info.html
     * You can configure the routing algorithm used at the target group level
     * The default routing algorithm is round robin; alternatively, you can specify the least outstanding requests routing algorithm.
 
+* Here, the two Ec2 instances we create a load balancer (Application Load Balancer)
+
+=> Load Balancers => Create load balancer => Application Load Balancer => Create 
+
+![Alt text](shots/136.PNG)
+![Alt text](shots/137.PNG)
+![Alt text](shots/138.PNG)
+
+* Now we create a target group and also add the health checks
+
+=> Target Groups => Create target group => instances => check for the port 'curl -I http://<privete_IP>/orders/info.html' OrdersServer => http => port:80 
+
+
+
+=> Select required instances => Include as pending below => Create target group
+
+![Alt text](shots/144.PNG)
+![Alt text](shots/145.PNG)
+![Alt text](shots/146.PNG)
+
+=> Create target group => instances => check for the port 'curl -I http://<privete_IP>/admin/info.html' AdminServer => http => port:80 => Create target group
+
+![Alt text](shots/139.PNG)
+![Alt text](shots/140.PNG)
+![Alt text](shots/141.PNG)
+
+=> Health checks => HTTP => Traffic port => Healthy threshold-3, Unhealthy threshold-2, Timeout-5, Interval-6, Success code-200 => Next
+
+![Alt text](shots/147.PNG)
+![Alt text](shots/148.PNG)
+![Alt text](shots/149.PNG)
+![Alt text](shots/150.PNG)
+![Alt text](shots/151.PNG)
+
+* We select a target group => Listener with the Load Balancer => OrdersServer => Create load balancer and wait till it get's into active state
+
+![Alt text](shots/152.PNG)
+![Alt text](shots/153.PNG)
+![Alt text](shots/154.PNG)
+
 * Enabling path based routing : 'https://repost.aws/knowledge-center/elb-achieve-path-based-routing-alb'
 
-
-
-
+![Alt text](shots/155.PNG)
+![Alt text](shots/156.PNG)
 
 * Path based routing : 'https://linuxhint.com/path-based-routing-alb/'
+
+* We change the rules according to our access as below
+
+![Alt text](shots/157.PNG)
+
+=> Manage rules => select on ' + '
+
+
+
+
+
+
 
 * Once path based routing is set, access the application over the browser
 
