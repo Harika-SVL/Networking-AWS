@@ -1246,5 +1246,33 @@ echo "<h1> Admin Server For testing </h1>" > /var/www/html/admin/info.html
 
 ![Alt text](shots/169.PNG)
 
-# Workshop
+## Workshop
 
+* Goal: Multi Region application with failover
+
+![Alt text](shots/171.PNG)
+
+* As part of this workshop
+    * complete network creation from AWS CLI
+    * EC2 instances lets create from console
+    * Route 53 configurations also from aws console
+* Step 1: Create this manually in VPC
+* To install spring petclinic
+```
+sudo apt update
+sudo apt install openjdk-11-jdk -y
+cd /tmp
+wget https://referenceapplicationskhaja.s3.us-west-2.amazonaws.com/spring-petclinic-2.4.2.jar
+java -jar /tmp/spring-petclinic-2.4.2.jar
+```
+* AWS CLI allows us to interact with AWS over command line
+    * Installtion Refer Here
+    * Create an IAM user
+    * configure aws cli aws configure
+* Finding right commands:
+    * take help of search engines
+
+
+
+* [ Refer here : 'https://github.com/asquarezone/awsadministration/commit/a6cebfa0faa236caff6f994ecbad2c254e161db1'] for the script to create vpcs in two regions
+* We have created network load balancer in two regions and created a route 53 record of type failover
