@@ -1245,3 +1245,6 @@ echo "<h1> Admin Server For testing </h1>" > /var/www/html/admin/info.html
 => Now we can check for both the applications (orders/info.html and admin/info.html) with the hostname given instead of the load balancer DNS name
 
 ![Alt text](shots/169.PNG)
+
+# Workshop
+
