@@ -1284,14 +1284,22 @@ java -jar /tmp/spring-petclinic-2.4.2.jar
 
 * [ Refer here : 'https://github.com/asquarezone/awsadministration/commit/a6cebfa0faa236caff6f994ecbad2c254e161db1'] for the script to create vpcs in two regions
 
+=> Create vpc and subnets
 ![Alt text](shots/173.PNG)
+
+=> Create subnets and internet-gateway
 ![Alt text](shots/174.PNG)
+
+=> Attach internet-gateway and create a route-table
 ![Alt text](shots/175.PNG)
+
+=> Create associate route-table and vpc in both primary & secondary regions
 ![Alt text](shots/176.PNG)
 
 * To describe a query in particular, we see the JASON code as tree and then write the command
 
-=> To get vpcs : aws ec2 describe-vpcs --query "Vpcs[].VpcId" (called as JMVS path)
+=> To get vpcs :
+  vpc_id=$(aws ec2 describe-vpcs --query "Vpcs[].VpcId") (called as JMVS path)
 
 
 
