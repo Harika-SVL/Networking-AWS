@@ -1256,7 +1256,7 @@ echo "<h1> Admin Server For testing </h1>" > /var/www/html/admin/info.html
     * complete network creation from AWS CLI
     * EC2 instances lets create from console
     * Route 53 configurations also from aws console
-* Step 1: Create this manually in VPC
+* Step 1(Try it on the console): Create this manually in VPC
 * To install spring petclinic
 ```
 sudo apt update
@@ -1265,14 +1265,28 @@ cd /tmp
 wget https://referenceapplicationskhaja.s3.us-west-2.amazonaws.com/spring-petclinic-2.4.2.jar
 java -jar /tmp/spring-petclinic-2.4.2.jar
 ```
+### What we do in UI can also be achieved using AWS CLI
+
 * AWS CLI allows us to interact with AWS over command line
-    * Installtion Refer Here
-    * Create an IAM user
-    * configure aws cli aws configure
+    * Installtion [refer here : 'https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html']
+    * Create an IAM user - get the access key and secret access key
+    * configure aws cli 'aws configure' with mentioning the region
 * Finding right commands:
-    * take help of search engines
+    * take help of search engines 'aws vpc cli'
 
+![Alt text](shots/172.PNG)
 
+[* Here while we create a new vpc using command 'aws ec2 crete-vpc --cidr-block "10.0.0.0/16" --region "us-west-2"']     
+
+[* If we run it multiple times ,it gets created multiple times with different ID's, instead of Avoiding it to crete a new one if already existing]
+
+[* If we want to delete any vpc we use the command 'aws ec2 delete-vpc --vpc-id vpc-031271dd7b341138a']
 
 * [ Refer here : 'https://github.com/asquarezone/awsadministration/commit/a6cebfa0faa236caff6f994ecbad2c254e161db1'] for the script to create vpcs in two regions
+
+![Alt text](shots/173.PNG)
+![Alt text](shots/174.PNG)
+![Alt text](shots/175.PNG)
+![Alt text](shots/176.PNG)
+
 *  We have created network load balancer in two regions and created a route 53 record of type failover
