@@ -1275,4 +1275,4 @@ java -jar /tmp/spring-petclinic-2.4.2.jar
 
 
 * [ Refer here : 'https://github.com/asquarezone/awsadministration/commit/a6cebfa0faa236caff6f994ecbad2c254e161db1'] for the script to create vpcs in two regions
-* We have created network load balancer in two regions and created a route 53 record of type failover
+*  We have created network load balancer in two regions and created a route 53 record of type failover
