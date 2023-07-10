@@ -1254,9 +1254,11 @@ echo "<h1> Admin Server For testing </h1>" > /var/www/html/admin/info.html
 
 * As part of this workshop
     * complete network creation from AWS CLI
-    * EC2 instances lets create from console
-    * Route 53 configurations also from aws console
-* Step 1(Try it on the console): Create this manually in VPC
+    * EC2 instances lets create from AWS console
+    * Route 53 configurations also from AWS console
+
+### Step 1-(Try it on the console): Create the above manually in VPC
+
 * To install spring petclinic
 ```
 sudo apt update
@@ -1265,16 +1267,12 @@ cd /tmp
 wget https://referenceapplicationskhaja.s3.us-west-2.amazonaws.com/spring-petclinic-2.4.2.jar
 java -jar /tmp/spring-petclinic-2.4.2.jar
 ```
-### What we do in UI can also be achieved using AWS CLI
+### 1.  Network Creation from AWS CLI
 
 * AWS CLI allows us to interact with AWS over command line
     * Installtion [refer here : 'https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html']
     * Create an IAM user - get the access key and secret access key
     * configure aws cli 'aws configure' with mentioning the region
-* Finding right commands:
-    * take help of search engines 'aws vpc cli'
-
-![Alt text](shots/172.PNG)
 
 [* Here while we create a new vpc using command 'aws ec2 crete-vpc --cidr-block "10.0.0.0/16" --region "us-west-2"']     
 
@@ -1282,25 +1280,35 @@ java -jar /tmp/spring-petclinic-2.4.2.jar
 
 [* If we want to delete any vpc we use the command 'aws ec2 delete-vpc --vpc-id vpc-031271dd7b341138a']
 
-* [ Refer here : 'https://github.com/asquarezone/awsadministration/commit/a6cebfa0faa236caff6f994ecbad2c254e161db1'] for the script to create vpcs in two regions
-
-=> Create vpc and subnets
-![Alt text](shots/173.PNG)
-
-=> Create subnets and internet-gateway
-![Alt text](shots/174.PNG)
-
-=> Attach internet-gateway and create a route-table
-![Alt text](shots/175.PNG)
-
-=> Create associate route-table and vpc in both primary & secondary regions
-![Alt text](shots/176.PNG)
-
 * To describe a query in particular, we see the JASON code as tree and then write the command
 
 => To get vpcs :
   vpc_id=$(aws ec2 describe-vpcs --query "Vpcs[].VpcId") (called as JMVS path)
 
+* For finding right commands:
+    * Take help of search engines 'aws vpc cli'
 
+![Alt text](shots/172.PNG)
+
+* [ Refer here : 'https://github.com/asquarezone/awsadministration/commit/a6cebfa0faa236caff6f994ecbad2c254e161db1'] for the script to create vpcs in two regions
+* Search the syntax and the attributes with each resource using 'aws <resource-name> cli'
+
+=> Create vpc 
+
+![Alt text](shots/173.PNG)
+
+=> Create subnets and internet-gateway
+
+![Alt text](shots/174.PNG)
+
+=> Attach internet-gateway with the vpc
+=> Create a route-table and attach to vpc
+=> Create route and associate the route-table with the subnets
+
+![Alt text](shots/175.PNG)
+
+=> Create vpc in both primary & secondary regions
+
+![Alt text](shots/176.PNG)
 
 *  We have created network load balancer in two regions and created a route 53 record of type failover
