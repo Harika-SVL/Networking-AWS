@@ -1289,4 +1289,10 @@ java -jar /tmp/spring-petclinic-2.4.2.jar
 ![Alt text](shots/175.PNG)
 ![Alt text](shots/176.PNG)
 
+* To describe a query in particular, we see the JASON code as tree and then write the command
+
+=> To get vpcs : aws ec2 describe-vpcs --query "Vpcs[].VpcId" (called as JMVS path)
+
+
+
 *  We have created network load balancer in two regions and created a route 53 record of type failover
